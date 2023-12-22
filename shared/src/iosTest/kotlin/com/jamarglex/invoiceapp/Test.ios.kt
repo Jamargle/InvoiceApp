@@ -1,5 +1,6 @@
 package com.jamarglex.invoiceapp
 
+import com.jamarglex.invoiceapp.shared.Greeting
 import kotlin.test.Test
 import kotlin.test.assertTrue
 

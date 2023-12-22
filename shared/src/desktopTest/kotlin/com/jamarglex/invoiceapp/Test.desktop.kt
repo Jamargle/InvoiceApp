@@ -4,7 +4,7 @@ import com.jamarglex.invoiceapp.shared.Greeting
 import kotlin.test.Test
 import kotlin.test.assertTrue
 
-class CommonGreetingTest {
+class DesktopGreetingTest {
 
     @Test
     fun testExample() {
