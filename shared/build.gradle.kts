@@ -2,6 +2,7 @@ import org.jetbrains.compose.ExperimentalComposeLibrary
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsCompose)
 }
@@ -38,6 +39,7 @@ kotlin {
         val desktopMain by getting {
             dependencies {
                 implementation(compose.desktop.currentOs)
+                implementation(libs.kotlinx.coroutines.swing)
             }
         }
 
@@ -50,10 +52,16 @@ kotlin {
             dependencies {
                 implementation(compose.runtime)
                 implementation(compose.foundation)
-                implementation(compose.material)
+                implementation(compose.material3)
                 implementation(compose.ui)
                 @OptIn(ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
+                api(libs.koin.core)
+                api(libs.kotlinx.coroutines.core)
+                implementation(libs.kotlinx.serialization)
+                implementation(libs.voyager.koin)
+                implementation(libs.voyager.navigator)
+                implementation(libs.voyager.screenModel)
             }
         }
 
