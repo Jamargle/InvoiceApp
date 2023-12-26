@@ -13,7 +13,7 @@ data class DetailScreen(private val noteId: Long) : Screen {
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
         val detailsViewModel = getScreenModel<DetailsViewModel> { parametersOf(noteId) }
-        Detail(
+        DetailScreen(
             viewModel = detailsViewModel,
             onClose = { navigator.pop() }
         )
@@ -22,4 +22,4 @@ data class DetailScreen(private val noteId: Long) : Screen {
 }
 
 @Composable
-expect fun Detail(viewModel: DetailsViewModel, onClose: () -> Unit)
+expect fun DetailScreen(viewModel: DetailsViewModel, onClose: () -> Unit)

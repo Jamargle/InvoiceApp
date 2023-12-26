@@ -5,6 +5,6 @@ import androidx.compose.runtime.Composable
 import com.jamarglex.invoiceapp.getPlatform
 
 @Composable
-actual fun Home(viewModel: HomeViewModel, onInvoiceClick: (Long) -> Unit) {
-    Text("This is Home screen in iOS ${getPlatform()}")
+actual fun HomeScreen(viewModel: HomeViewModel, onInvoiceClick: (Long) -> Unit) {
+    Text("This is Home screen in desktop: ${getPlatform()}")
 }

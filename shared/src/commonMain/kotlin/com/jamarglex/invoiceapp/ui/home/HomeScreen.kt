@@ -13,7 +13,7 @@ object HomeScreen : Screen {
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
         val homeViewModel = getScreenModel<HomeViewModel>()
-        Home(
+        HomeScreen(
             viewModel = homeViewModel,
             onInvoiceClick = { navigator.push(DetailScreen(it)) }
         )
@@ -22,4 +22,4 @@ object HomeScreen : Screen {
 }
 
 @Composable
-expect fun Home(viewModel: HomeViewModel, onInvoiceClick: (Long) -> Unit)
+expect fun HomeScreen(viewModel: HomeViewModel, onInvoiceClick: (Long) -> Unit)

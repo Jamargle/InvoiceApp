@@ -43,12 +43,7 @@ kotlin {
             }
         }
 
-        androidMain.dependencies {
-            implementation(libs.compose.ui.tooling.preview)
-            implementation(libs.androidx.activity.compose)
-        }
-
-        commonMain {
+        val commonMain by getting {
             dependencies {
                 implementation(compose.runtime)
                 implementation(compose.foundation)
@@ -65,10 +60,25 @@ kotlin {
             }
         }
 
-        commonTest {
+        commonTest.dependencies {
+            implementation(libs.kotlin.test)
+        }
+
+        val commonMobileMain by creating {
+            dependsOn(commonMain)
+        }
+
+        androidMain.get().apply {
+            dependsOn(commonMobileMain)
             dependencies {
-                implementation(libs.kotlin.test)
+                implementation(libs.compose.ui.tooling.preview)
+                implementation(libs.androidx.activity.compose)
+                implementation(libs.kotlinx.coroutines.android)
             }
+        }
+
+        iosMain.get().apply {
+            dependsOn(commonMobileMain)
         }
     }
 }

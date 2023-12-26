@@ -9,7 +9,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-actual fun Detail(viewModel: DetailsViewModel, onClose: () -> Unit) {
+actual fun DetailScreen(viewModel: DetailsViewModel, onClose: () -> Unit) {
     MaterialTheme {
         Box(
             contentAlignment = Alignment.Center,

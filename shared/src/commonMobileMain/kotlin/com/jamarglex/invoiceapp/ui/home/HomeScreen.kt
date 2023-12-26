@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.dp
 import com.jamarglex.invoiceapp.domain.Invoice
 
 @Composable
-actual fun Home(viewModel: HomeViewModel, onInvoiceClick: (Long) -> Unit) {
+actual fun HomeScreen(viewModel: HomeViewModel, onInvoiceClick: (Long) -> Unit) {
     MaterialTheme {
         Scaffold(
             floatingActionButton = {
