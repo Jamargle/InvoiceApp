@@ -1,9 +1,9 @@
-package data
+package com.jamarglex.invoiceapp.data
 
 import com.jamarglex.invoiceapp.domain.Invoice
 import com.jamarglex.invoiceapp.domain.InvoiceRepository
 
-object Repository : InvoiceRepository {
+internal object InvoiceRepositoryImp : InvoiceRepository {
 
     override fun getAll(): List<Invoice> {
         return listOf(

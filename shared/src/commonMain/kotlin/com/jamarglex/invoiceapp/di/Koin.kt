@@ -3,7 +3,7 @@ package com.jamarglex.invoiceapp.di
 import com.jamarglex.invoiceapp.domain.InvoiceRepository
 import com.jamarglex.invoiceapp.ui.details.DetailsViewModel
 import com.jamarglex.invoiceapp.ui.home.HomeViewModel
-import data.Repository
+import com.jamarglex.invoiceapp.data.InvoiceRepositoryImp
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
 import org.koin.dsl.KoinAppDeclaration
@@ -22,7 +22,7 @@ fun initKoin() = initKoin {}
 
 fun commonModule() = module {
     includes(platformModule())
-    factory<InvoiceRepository> { Repository }
+    factory<InvoiceRepository> { InvoiceRepositoryImp }
     factory { HomeViewModel(invoiceRepository = get()) }
     factory { (invoiceId: Long) ->
         DetailsViewModel(
