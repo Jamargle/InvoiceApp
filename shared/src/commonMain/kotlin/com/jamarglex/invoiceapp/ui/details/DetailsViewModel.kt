@@ -26,7 +26,11 @@ class DetailsViewModel(
     private fun loadInvoice() {
         screenModelScope.launch {
             state = UiState(loading = true)
-            state = UiState(invoice = invoiceRepository.getById(invoiceId))
+            val invoice = invoiceRepository.getById(invoiceId)
+            if (invoice != null) {
+                state = UiState(invoice = invoice)
+            }
+            // TODO error handling...
         }
     }
 
