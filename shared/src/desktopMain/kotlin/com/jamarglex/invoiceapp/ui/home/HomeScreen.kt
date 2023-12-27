@@ -25,32 +25,29 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.jamarglex.invoiceapp.domain.Invoice
-import com.jamarglex.invoiceapp.getPlatform
 
 @Composable
 actual fun HomeScreen(viewModel: HomeViewModel, onInvoiceClick: (Long) -> Unit) {
-    MaterialTheme {
-        Scaffold(
-            floatingActionButton = {
-                FloatingActionButton(onClick = { onInvoiceClick(Invoice.NEW_INVOICE) }) {
-                    Icon(imageVector = Icons.Default.Add, contentDescription = "Add Note")
-                }
+    Scaffold(
+        floatingActionButton = {
+            FloatingActionButton(onClick = { onInvoiceClick(Invoice.NEW_INVOICE) }) {
+                Icon(imageVector = Icons.Default.Add, contentDescription = "Add Note")
             }
-        ) { padding ->
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier.padding(padding).fillMaxSize()
-            ) {
-                if (viewModel.state.isLoading) {
-                    CircularProgressIndicator()
-                }
+        }
+    ) { padding ->
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier.padding(padding).fillMaxSize()
+        ) {
+            if (viewModel.state.isLoading) {
+                CircularProgressIndicator()
+            }
 
-                viewModel.state.invoices.let { invoices ->
-                    InvoicesList(
-                        invoices = invoices,
-                        onInvoiceClick = { onInvoiceClick(it.id) }
-                    )
-                }
+            viewModel.state.invoices.let { invoices ->
+                InvoicesList(
+                    invoices = invoices,
+                    onInvoiceClick = { onInvoiceClick(it.id) }
+                )
             }
         }
     }
