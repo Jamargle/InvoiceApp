@@ -3,7 +3,6 @@ package com.jamarglex.invoiceapp.ui.home
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -27,11 +26,17 @@ import androidx.compose.ui.unit.dp
 import com.jamarglex.invoiceapp.domain.Invoice
 
 @Composable
-actual fun HomeScreen(viewModel: HomeViewModel, onInvoiceClick: (Long) -> Unit) {
+actual fun HomeScreen(
+    viewModel: HomeViewModel,
+    onInvoiceClick: (Long) -> Unit
+) {
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(onClick = { onInvoiceClick(Invoice.NEW_INVOICE) }) {
-                Icon(imageVector = Icons.Default.Add, contentDescription = "Add Note")
+                Icon(
+                    imageVector = Icons.Default.Add,
+                    contentDescription = "Add Invoice"
+                )
             }
         }
     ) { padding ->
@@ -43,38 +48,37 @@ actual fun HomeScreen(viewModel: HomeViewModel, onInvoiceClick: (Long) -> Unit) 
                 CircularProgressIndicator()
             }
 
-            viewModel.state.invoices.let { invoices ->
-                InvoicesList(
-                    invoices = invoices,
-                    onInvoiceClick = { onInvoiceClick(it.id) }
-                )
-            }
+            InvoicesList(
+                invoices = viewModel.state.invoices,
+                onInvoiceClick = { onInvoiceClick(it) }
+            )
         }
     }
 }
 
 @Composable
-private fun InvoicesList(invoices: List<Invoice>, onInvoiceClick: (Invoice) -> Unit) {
+private fun InvoicesList(
+    invoices: List<Invoice>,
+    onInvoiceClick: (Long) -> Unit
+) {
     LazyColumn(
-        modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         items(invoices) { invoice ->
             Card(
                 modifier = Modifier
                     .padding(8.dp)
                     .fillMaxWidth(0.8f)
-                    .clickable { onInvoiceClick(invoice) }
+                    .clickable { onInvoiceClick(invoice.id) }
             ) {
                 Column(
                     modifier = Modifier.padding(16.dp)
                 ) {
-                    Row {
-                        Text(
-                            text = invoice.title,
-                            style = MaterialTheme.typography.titleLarge,
-                            modifier = Modifier.weight(1f)
-                        )
-                    }
+                    Text(
+                        text = invoice.title,
+                        style = MaterialTheme.typography.titleLarge
+                    )
 
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(text = invoice.description)
