@@ -23,7 +23,7 @@ class HomeViewModel(
     private fun loadInvoices() {
         screenModelScope.launch {
             state = state.copy(isLoading = true)
-            val response = invoiceRepository.getAll()
+            val response = invoiceRepository.getAllInvoices()
             state = state.copy(invoices = response, isLoading = false)
         }
     }

@@ -2,15 +2,22 @@ package com.jamarglex.invoiceapp.data
 
 import com.jamarglex.invoiceapp.domain.Invoice
 import com.jamarglex.invoiceapp.domain.InvoiceRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
+import kotlinx.coroutines.withContext
 
 internal object InvoiceRepositoryImp : InvoiceRepository {
 
-    override fun getAll(): List<Invoice> {
-        return allInvoices
+    override suspend fun getAllInvoices(): List<Invoice> {
+        return withContext(Dispatchers.IO) {
+            allInvoices
+        }
     }
 
-    override fun getById(invoiceId: Long): Invoice? {
-        return allInvoices.firstOrNull { it.id == invoiceId }
+    override suspend fun getInvoiceById(invoiceId: Long): Invoice? {
+        return withContext(Dispatchers.IO) {
+            allInvoices.firstOrNull { it.id == invoiceId }
+        }
     }
 
     private val allInvoices = listOf(

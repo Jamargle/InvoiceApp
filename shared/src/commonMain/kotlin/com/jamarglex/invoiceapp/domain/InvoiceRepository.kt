@@ -1,6 +1,6 @@
 package com.jamarglex.invoiceapp.domain
 
 interface InvoiceRepository {
-    fun getAll(): List<Invoice>
-    fun getById(invoiceId: Long): Invoice?
+    suspend fun getAllInvoices(): List<Invoice>
+    suspend fun getInvoiceById(invoiceId: Long): Invoice?
 }
