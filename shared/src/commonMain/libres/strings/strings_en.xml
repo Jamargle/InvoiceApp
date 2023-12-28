@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="more_dots_menu_content_description">Menu button</string>
     <string name="back_button_content_description">Back button</string>
     <string name="home_add_fab_content_description">Add Invoice</string>
 </resources>
