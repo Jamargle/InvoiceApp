@@ -1,25 +1,51 @@
 package com.jamarglex.invoiceapp.ui.home
 
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import com.jamarglex.invoiceapp.domain.Invoice
+import com.jamarglex.invoiceapp.shared.Res
 import com.jamarglex.invoiceapp.ui.details.DetailScreen
 
-object HomeScreen : Screen {
+internal object HomeScreen : Screen {
 
     @Composable
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
         val homeViewModel = getScreenModel<HomeViewModel>()
-        HomeScreen(
-            viewModel = homeViewModel,
-            onInvoiceClick = { navigator.push(DetailScreen(it)) }
+        Scaffold(
+            topBar = { HomeTopBar(onMenuOverFlowClicked = {}) },
+            content = { padding ->
+                HomeScreenContent(
+                    padding = padding,
+                    uiState = homeViewModel.state,
+                    onInvoiceClick = { navigator.push(DetailScreen(it)) }
+                )
+            },
+            floatingActionButton = {
+                FloatingActionButton(onClick = { navigator.push(DetailScreen(Invoice.NEW_INVOICE)) }) {
+                    Icon(
+                        imageVector = Icons.Default.Add,
+                        contentDescription = Res.string.home_add_fab_content_description
+                    )
+                }
+            }
         )
     }
 
 }
 
 @Composable
-expect fun HomeScreen(viewModel: HomeViewModel, onInvoiceClick: (Long) -> Unit)
+expect fun HomeScreenContent(
+    padding: PaddingValues,
+    uiState: HomeViewModel.UiState,
+    onInvoiceClick: (Long) -> Unit
+)
