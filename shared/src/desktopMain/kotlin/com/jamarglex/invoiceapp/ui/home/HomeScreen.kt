@@ -24,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.jamarglex.invoiceapp.domain.Invoice
+import com.jamarglex.invoiceapp.shared.Res
 
 @Composable
 actual fun HomeScreen(
@@ -35,7 +36,7 @@ actual fun HomeScreen(
             FloatingActionButton(onClick = { onInvoiceClick(Invoice.NEW_INVOICE) }) {
                 Icon(
                     imageVector = Icons.Default.Add,
-                    contentDescription = "Add Invoice"
+                    contentDescription = Res.string.home_add_fab_content_description
                 )
             }
         }

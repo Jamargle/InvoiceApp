@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.libRes)
 }
 
 kotlin {
@@ -55,6 +56,7 @@ kotlin {
                 api(libs.koin.core)
                 api(libs.kotlinx.coroutines.core)
                 implementation(libs.kotlinx.serialization)
+                implementation(libs.libres)
                 implementation(libs.voyager.koin)
                 implementation(libs.voyager.navigator)
                 implementation(libs.voyager.screenModel)
@@ -100,4 +102,8 @@ android {
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     sourceSets["main"].resources.srcDirs("src/commonMain/resources")
 
+}
+
+libres {
+    generateNamedArguments = true // false by default
 }
