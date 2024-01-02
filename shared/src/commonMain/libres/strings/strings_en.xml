@@ -2,5 +2,9 @@
 <resources>
     <string name="more_dots_menu_content_description">Menu button</string>
     <string name="back_button_content_description">Back button</string>
+    <string name="edit_menu_content_description">Edit button</string>
     <string name="home_add_fab_content_description">Add Invoice</string>
+    <string name="invoice_details_error_initialising_view_invoice">There was an error while loading the invoice with ID ${invoiceId}</string>
+    <string name="invoice_details_title_label">Title</string>
+    <string name="invoice_details_description_label">Description</string>
 </resources>

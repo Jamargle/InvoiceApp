@@ -64,7 +64,12 @@ kotlin {
         }
 
         commonTest.dependencies {
+            implementation(libs.junit)
+//            implementation(libs.mockk.common) // mockk does not work in commonTests https://stackoverflow.com/a/65493753
+            implementation(libs.kotest.assertionsCore)
+            implementation(libs.kotest.property)
             implementation(libs.kotlin.test)
+            implementation(libs.kotlinx.coroutines.test)
         }
 
         val commonMobileMain by creating {

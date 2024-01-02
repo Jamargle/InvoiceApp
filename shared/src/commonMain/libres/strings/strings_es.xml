@@ -2,5 +2,9 @@
 <resources>
     <string name="more_dots_menu_content_description">Botón de menu</string>
     <string name="back_button_content_description">Botón atrás</string>
+    <string name="edit_menu_content_description">Botón de editar</string>
     <string name="home_add_fab_content_description">Añadir factura</string>
+    <string name="invoice_details_error_initialising_view_invoice">Hubo un error al cargar la factura con ID ${invoiceId}</string>
+    <string name="invoice_details_title_label">Título</string>
+    <string name="invoice_details_description_label">Descripción</string>
 </resources>

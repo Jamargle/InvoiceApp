@@ -4,13 +4,14 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Invoice(
-    val id: Long = NEW_INVOICE,
+    val id: Long,
     val title: String,
     val description: String,
     val type: Type
 ) {
     companion object {
-        const val NEW_INVOICE = -1L
+        const val NEW_INVOICE_ID = -123L
     }
+
     enum class Type { TEXT, AUDIO }
 }

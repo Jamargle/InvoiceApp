@@ -31,7 +31,7 @@ internal object HomeScreen : Screen {
                 )
             },
             floatingActionButton = {
-                FloatingActionButton(onClick = { navigator.push(DetailScreen(Invoice.NEW_INVOICE)) }) {
+                FloatingActionButton(onClick = { navigator.push(DetailScreen(Invoice.NEW_INVOICE_ID)) }) {
                     Icon(
                         imageVector = Icons.Default.Add,
                         contentDescription = Res.string.home_add_fab_content_description

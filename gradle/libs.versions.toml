@@ -14,16 +14,15 @@ koin-android = "3.5.3"
 koin-android-compose = "3.5.3"
 koin-compose-multiplatform = "1.1.2"
 koin-core = "3.5.3"
+kotest = "5.7.2"
 kotlin = "1.9.21"
 kotlin-coroutines = "1.7.3"
 kotlin-serialization = "1.6.2"
+mockk = "1.13.8" # mockk does not work in commonTests https://stackoverflow.com/a/65493753
 libres = "1.2.2"
 voyager = "1.0.0"
 
 [libraries]
-kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
-kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
-junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
@@ -31,6 +30,7 @@ compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview"
 compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "compose-material3" }
 compose-desktop-material3 = { module = "org.jetbrains.compose.material3:material3-desktop", version.ref = "compose-desktop-material3" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin-android" }
 koin-workmanager = { module = "io.insert-koin:koin-androidx-workmanager", version.ref = "koin-android" }
 koin-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin-android-compose" }
@@ -38,11 +38,17 @@ koin-compose-multiplatform = { module = "io.insert-koin:koin-compose", version.r
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin-core" }
 koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin-core" }
 koin-test-junit4 = { module = "io.insert-koin:koin-test-junit4", version.ref = "koin-core" }
+kotest-assertionsCore = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
+kotest-property = { module = "io.kotest:kotest-property", version.ref = "kotest" }
+kotest-runner-junit5-jvm = { module = "io.kotest:kotest-runner-junit5-jvm", version.ref = "kotest" }
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlin-coroutines" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
 kotlinx-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlin-coroutines" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlin-coroutines" }
 kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlin-serialization" }
 libres = { module = "io.github.skeptick.libres:libres-compose", version.ref = "libres" }
+mockk-common = { module = "io.mockk:mockk-common", version.ref = "mockk" }
 voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
 voyager-screenModel = { module = "cafe.adriel.voyager:voyager-screenmodel", version.ref = "voyager" }
 voyager-bottomSheetNavigator = { module = "cafe.adriel.voyager:voyager-bottom-sheet-navigator", version.ref = "voyager" }

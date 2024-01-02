@@ -22,7 +22,7 @@ fun initKoin() = initKoin {}
 
 fun commonModule() = module {
     includes(platformModule())
-    factory<InvoiceRepository> { InvoiceRepositoryImp }
+    factory<InvoiceRepository> { InvoiceRepositoryImp() }
     factory { HomeViewModel(invoiceRepository = get()) }
     factory { (invoiceId: Long) ->
         DetailsViewModel(
