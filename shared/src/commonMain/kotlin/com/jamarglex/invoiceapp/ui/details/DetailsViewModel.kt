@@ -85,4 +85,8 @@ internal class DetailsViewModel(
             )
         }
     }
+
+    fun onSaveInvoiceClicked() {
+        // TODO
+    }
 }

@@ -7,4 +7,5 @@
     <string name="invoice_details_error_initialising_view_invoice">Hubo un error al cargar la factura con ID ${invoiceId}</string>
     <string name="invoice_details_title_label">Título</string>
     <string name="invoice_details_description_label">Descripción</string>
+    <string name="done_save_invoice_fab_content_description">Guardar cambios en la factura</string>
 </resources>

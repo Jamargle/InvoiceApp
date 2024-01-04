@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FloatingActionButton
@@ -40,7 +41,8 @@ data class DetailScreen(private val invoiceId: Long) : Screen {
             onClose = { navigator.pop() },
             onEditInvoiceClicked = detailsViewModel::onEditInvoiceClicked,
             onEditInvoiceTitleChange = detailsViewModel::onEditInvoiceTitleChange,
-            onEditInvoiceDescriptionChange = detailsViewModel::onEditInvoiceDescriptionChange
+            onEditInvoiceDescriptionChange = detailsViewModel::onEditInvoiceDescriptionChange,
+            onSaveInvoiceClicked = detailsViewModel::onSaveInvoiceClicked
         )
     }
 
@@ -52,7 +54,8 @@ private fun DetailScreen(
     onClose: () -> Unit,
     onEditInvoiceClicked: () -> Unit,
     onEditInvoiceTitleChange: (String) -> Unit,
-    onEditInvoiceDescriptionChange: (String) -> Unit
+    onEditInvoiceDescriptionChange: (String) -> Unit,
+    onSaveInvoiceClicked: () -> Unit
 ) {
     val uiState = viewModel.state
     Scaffold(
@@ -70,7 +73,8 @@ private fun DetailScreen(
                 viewModel.state,
                 onEditInvoiceClicked,
                 onEditInvoiceTitleChange,
-                onEditInvoiceDescriptionChange
+                onEditInvoiceDescriptionChange,
+                onSaveInvoiceClicked
             )
         }
     )
@@ -82,7 +86,8 @@ private fun DetailsScreenContent(
     uiState: UiState,
     onEditInvoiceClicked: () -> Unit,
     onEditInvoiceTitleChange: (String) -> Unit,
-    onEditInvoiceDescriptionChange: (String) -> Unit
+    onEditInvoiceDescriptionChange: (String) -> Unit,
+    onSaveInvoiceClicked: () -> Unit
 ) {
     Box(modifier = Modifier.padding(padding)) {
         when (uiState) {
@@ -91,7 +96,8 @@ private fun DetailsScreenContent(
             is UiState.Editing -> EditInvoiceScreen(
                 uiState,
                 onEditInvoiceTitleChange,
-                onEditInvoiceDescriptionChange
+                onEditInvoiceDescriptionChange,
+                onSaveInvoiceClicked
             )
 
             is UiState.Viewing -> ViewInvoiceScreen(
@@ -106,31 +112,47 @@ private fun DetailsScreenContent(
 private fun EditInvoiceScreen(
     uiState: UiState.Editing,
     onEditInvoiceTitleChange: (String) -> Unit,
-    onEditInvoiceDescriptionChange: (String) -> Unit
+    onEditInvoiceDescriptionChange: (String) -> Unit,
+    onSaveInvoiceIconClicked: () -> Unit
 ) {
     val focusRequester = remember { FocusRequester() }
     LaunchedEffect(Unit) {
         focusRequester.requestFocus()
     }
-    Column(
-        modifier = Modifier.padding(32.dp)
+    Box(
+        modifier = Modifier.fillMaxSize()
     ) {
-        OutlinedTextField(
-            modifier = Modifier
-                .fillMaxWidth()
-                .focusRequester(focusRequester),
-            value = uiState.invoice.title,
-            onValueChange = onEditInvoiceTitleChange,
-            label = { Text(text = Res.string.invoice_details_title_label) },
-            maxLines = 1
-        )
+        Column(
+            modifier = Modifier.padding(32.dp)
+        ) {
+            OutlinedTextField(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .focusRequester(focusRequester),
+                value = uiState.invoice.title,
+                onValueChange = onEditInvoiceTitleChange,
+                label = { Text(text = Res.string.invoice_details_title_label) },
+                maxLines = 1
+            )
 
-        OutlinedTextField(
-            value = uiState.invoice.description,
-            onValueChange = onEditInvoiceDescriptionChange,
-            label = { Text(Res.string.invoice_details_description_label) },
-            modifier = Modifier.fillMaxWidth()
-        )
+            OutlinedTextField(
+                value = uiState.invoice.description,
+                onValueChange = onEditInvoiceDescriptionChange,
+                label = { Text(Res.string.invoice_details_description_label) },
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+        FloatingActionButton(
+            modifier = Modifier
+                .padding(16.dp)
+                .align(Alignment.BottomEnd),
+            onClick = onSaveInvoiceIconClicked
+        ) {
+            Icon(
+                imageVector = Icons.Default.Done,
+                contentDescription = Res.string.done_save_invoice_fab_content_description
+            )
+        }
     }
 }
 

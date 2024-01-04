@@ -7,4 +7,5 @@
     <string name="invoice_details_error_initialising_view_invoice">There was an error while loading the invoice with ID ${invoiceId}</string>
     <string name="invoice_details_title_label">Title</string>
     <string name="invoice_details_description_label">Description</string>
+    <string name="done_save_invoice_fab_content_description">Save invoice changes</string>
 </resources>
