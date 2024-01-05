@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.androidApplication)
+    alias(libs.plugins.googleServices)
     alias(libs.plugins.kotlinAndroid)
 }
 
@@ -44,6 +45,7 @@ dependencies {
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.tooling.preview)
     implementation(libs.compose.material3)
+    implementation(libs.firebase.common.ktx)
     implementation(libs.koin.android)
 
     debugImplementation(libs.compose.ui.tooling)

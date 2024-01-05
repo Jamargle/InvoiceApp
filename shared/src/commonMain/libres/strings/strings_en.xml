@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="login_screen_username_label">Username</string>
+    <string name="login_screen_password_label">Password</string>
+    <string name="login_screen_login_button_label">Login</string>
+    <string name="login_screen_error_read_button_label">Ok</string>
     <string name="more_dots_menu_content_description">Menu button</string>
     <string name="back_button_content_description">Back button</string>
     <string name="edit_menu_content_description">Edit button</string>

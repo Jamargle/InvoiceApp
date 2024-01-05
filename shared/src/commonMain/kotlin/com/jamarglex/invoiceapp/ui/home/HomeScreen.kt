@@ -7,6 +7,7 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
@@ -14,6 +15,7 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import com.jamarglex.invoiceapp.domain.Invoice
 import com.jamarglex.invoiceapp.shared.Res
 import com.jamarglex.invoiceapp.ui.details.DetailScreen
+import com.jamarglex.invoiceapp.ui.login.LoginScreen
 
 internal object HomeScreen : Screen {
 
@@ -21,6 +23,15 @@ internal object HomeScreen : Screen {
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
         val homeViewModel = getScreenModel<HomeViewModel>()
+
+        LaunchedEffect(Unit) {
+            homeViewModel.navigationEvents.collect { destination ->
+                when (destination) {
+                    HomeViewModel.NavigationEvent.ToLogin -> navigator.push(LoginScreen)
+                }
+            }
+        }
+
         Scaffold(
             topBar = { HomeTopBar(onMenuOverFlowClicked = {}) },
             content = { padding ->

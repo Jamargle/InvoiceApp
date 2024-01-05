@@ -1,5 +1,5 @@
 [versions]
-agp = "8.2.0"
+agp = "8.2.1"
 android-compileSdk = "34"
 android-minSdk = "29"
 android-targetSdk = "34"
@@ -9,6 +9,10 @@ compose-compiler = "1.5.6"
 compose-plugin = "1.5.11"
 compose-material3 = "1.1.2"
 compose-desktop-material3 = "1.5.11"
+firebase-bom = "32.7.0"
+firebase-common-ktx = "20.4.2"
+firebaseKmm = "1.10.4"
+googleServices = "4.4.0"
 junit = "4.13.2"
 koin-android = "3.5.3"
 koin-android-compose = "3.5.3"
@@ -30,6 +34,11 @@ compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview"
 compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "compose-material3" }
 compose-desktop-material3 = { module = "org.jetbrains.compose.material3:material3-desktop", version.ref = "compose-desktop-material3" }
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom" }
+firebase-common-ktx = { group = "com.google.firebase", name = "firebase-common-ktx", version.ref = "firebase-common-ktx" }
+firebaseKmm-auth = { module = "dev.gitlive:firebase-auth", version.ref = "firebaseKmm" }
+firebaseKmm-common = { module = "dev.gitlive:firebase-common", version.ref = "firebaseKmm" }
+firebaseKmm-firestore = { module = "dev.gitlive:firebase-firestore", version.ref = "firebaseKmm" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin-android" }
 koin-workmanager = { module = "io.insert-koin:koin-androidx-workmanager", version.ref = "koin-android" }
@@ -59,6 +68,7 @@ voyager-koin = { module = "cafe.adriel.voyager:voyager-koin", version.ref = "voy
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
+googleServices = { id = "com.google.gms.google-services", version.ref = "googleServices" }
 jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }

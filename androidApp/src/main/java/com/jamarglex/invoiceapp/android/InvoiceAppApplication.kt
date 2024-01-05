@@ -1,6 +1,7 @@
 package com.jamarglex.invoiceapp.android
 
 import android.app.Application
+import com.google.firebase.FirebaseApp
 import com.jamarglex.invoiceapp.android.di.androidAppModule
 import com.jamarglex.invoiceapp.di.initKoin
 import com.jamarglex.invoiceapp.di.platformModule
@@ -11,6 +12,7 @@ class InvoiceAppApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        FirebaseApp.initializeApp(this)
 
         initKoin {
             androidContext(this@InvoiceAppApplication)

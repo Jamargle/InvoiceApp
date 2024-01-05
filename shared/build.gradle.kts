@@ -74,6 +74,9 @@ kotlin {
 
         val commonMobileMain by creating {
             dependsOn(commonMain)
+            dependencies {
+                implementation(libs.firebaseKmm.auth)
+            }
         }
 
         androidMain.get().apply {
