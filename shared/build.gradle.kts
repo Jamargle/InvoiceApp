@@ -55,6 +55,8 @@ kotlin {
                 implementation(compose.components.resources)
                 api(libs.koin.core)
                 api(libs.kotlinx.coroutines.core)
+                implementation(libs.firebase.common)
+                implementation(libs.firebaseKmm.firestore)
                 implementation(libs.kotlinx.serialization)
                 implementation(libs.libres)
                 implementation(libs.voyager.koin)
@@ -85,6 +87,7 @@ kotlin {
                 implementation(libs.compose.ui.tooling.preview)
                 implementation(libs.androidx.activity.compose)
                 implementation(libs.kotlinx.coroutines.android)
+//                implementation(libs.firebase.bom)
             }
         }
 

@@ -1,5 +1,6 @@
 package com.jamarglex.invoiceapp.data
 
+import com.jamarglex.invoiceapp.data.api.NetworkInvoiceDataSource
 import com.jamarglex.invoiceapp.domain.Invoice
 import com.jamarglex.invoiceapp.domain.InvoiceRepository
 import kotlinx.coroutines.Dispatchers
@@ -7,6 +8,7 @@ import kotlinx.coroutines.IO
 import kotlinx.coroutines.withContext
 
 internal class InvoiceRepositoryImp(
+    private val networkInvoiceDataSource: NetworkInvoiceDataSource,
     private val allInvoices: List<Invoice> = someFakeInvoices
 ) : InvoiceRepository {
 
@@ -21,7 +23,14 @@ internal class InvoiceRepositoryImp(
 
     override suspend fun getAllInvoices(): List<Invoice> {
         return withContext(Dispatchers.IO) {
-            allInvoices
+            networkInvoiceDataSource.getAllInvoices().getOrNull()?.map { apiInvoice ->
+                Invoice(
+                    id = apiInvoice.id.toLong(),
+                    title = apiInvoice.title,
+                    description = apiInvoice.description,
+                    type = Invoice.Type.TEXT
+                )
+            } ?: allInvoices
         }
     }
 

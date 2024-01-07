@@ -87,6 +87,7 @@ internal class DetailsViewModel(
     }
 
     fun onSaveInvoiceClicked() {
-        // TODO
+        // TODO save invoice in the repository
+        // TODO go back to the list
     }
 }
