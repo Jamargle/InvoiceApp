@@ -6,6 +6,11 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.libRes)
+//    alias(libs.plugins.googleServices)
+}
+
+dependencies {
+    implementation(platform(libs.firebase.bom))
 }
 
 kotlin {
@@ -54,8 +59,9 @@ kotlin {
                 @OptIn(ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
                 api(libs.koin.core)
-                api(libs.kotlinx.coroutines.core)
-                implementation(libs.firebase.common)
+                implementation(libs.kotlinx.coroutines.core)
+                implementation(libs.firebaseKmm.auth)
+                implementation(libs.firebaseKmm.common)
                 implementation(libs.firebaseKmm.firestore)
                 implementation(libs.kotlinx.serialization)
                 implementation(libs.libres)

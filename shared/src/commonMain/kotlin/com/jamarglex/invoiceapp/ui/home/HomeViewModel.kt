@@ -18,8 +18,8 @@ class HomeViewModel(
     private val invoiceRepository: InvoiceRepository
 ) : ScreenModel {
 
-    private val navigationChannel = Channel<NavigationEvent>(Channel.BUFFERED)
-    val navigationEvents: Flow<NavigationEvent> = navigationChannel.receiveAsFlow()
+    private val navigationChannel by lazy { Channel<NavigationEvent>(Channel.BUFFERED) }
+    val navigationEvents: Flow<NavigationEvent> by lazy { navigationChannel.receiveAsFlow() }
 
     var state by mutableStateOf(UiState(invoices = emptyList(), isLoading = false))
         private set
@@ -30,8 +30,7 @@ class HomeViewModel(
             if (isUserLoggedIn) {
                 loadInvoices()
             } else {
-                navigationChannel.send(NavigationEvent.ToLogin)
-                return@launch
+//                navigationChannel.send(NavigationEvent.ToLogin)
             }
         }
     }

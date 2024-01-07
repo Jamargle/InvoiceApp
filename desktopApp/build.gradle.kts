@@ -3,7 +3,7 @@ import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.jetbrainsCompose)
-    alias(libs.plugins.googleServices)
+//    alias(libs.plugins.googleServices)
 }
 
 kotlin {
@@ -21,6 +21,7 @@ kotlin {
             dependencies {
                 implementation(projects.shared)
                 implementation(compose.desktop.currentOs)
+//                implementation(libs.firebase.admin)
             }
         }
     }

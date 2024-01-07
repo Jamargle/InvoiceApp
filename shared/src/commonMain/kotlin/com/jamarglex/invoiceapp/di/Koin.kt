@@ -1,7 +1,7 @@
 package com.jamarglex.invoiceapp.di
 
 import com.jamarglex.invoiceapp.data.InvoiceRepositoryImp
-import com.jamarglex.invoiceapp.data.api.NetworkInvoiceDataSource
+import com.jamarglex.invoiceapp.data.SessionRepositoryImp
 import com.jamarglex.invoiceapp.domain.InvoiceRepository
 import com.jamarglex.invoiceapp.ui.details.DetailsViewModel
 import com.jamarglex.invoiceapp.ui.home.HomeViewModel
@@ -26,6 +26,7 @@ fun initKoin() = initKoin {}
 
 fun commonModule() = module {
     includes(platformModule())
+    factory<InvoiceRepository> { InvoiceRepositoryImp() }
     factory { Firebase.firestore }
     factory { NetworkInvoiceDataSource(get()) }
     factory<InvoiceRepository> { InvoiceRepositoryImp(get()) }

@@ -4,7 +4,7 @@ import com.jamarglex.invoiceapp.domain.SessionRepository
 import dev.gitlive.firebase.Firebase
 import dev.gitlive.firebase.auth.auth
 
-internal class SessionRepositoryMobileImp : SessionRepository {
+internal class SessionRepositoryDesktopImp : SessionRepository {
 
     override suspend fun isUserLoggedIn(): Boolean {
         return false // TODO implement this properly
