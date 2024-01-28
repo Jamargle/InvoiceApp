@@ -19,6 +19,6 @@ dependencyResolutionManagement {
 }
 
 include(":androidApp")
-//include(":iosApp") // TODO disabled while working from Windows machine
+include(":iosApp")
 include(":desktopApp")
 include(":shared")

@@ -63,13 +63,15 @@ kotlin {
             }
         }
 
-        commonTest.dependencies {
-            implementation(libs.junit)
+        val commonTest by getting {
+            dependencies {
+                implementation(libs.junit)
 //            implementation(libs.mockk.common) // mockk does not work in commonTests https://stackoverflow.com/a/65493753
-            implementation(libs.kotest.assertionsCore)
-            implementation(libs.kotest.property)
-            implementation(libs.kotlin.test)
-            implementation(libs.kotlinx.coroutines.test)
+                implementation(libs.kotest.assertionsCore)
+                implementation(libs.kotest.property)
+                implementation(libs.kotlin.test)
+                implementation(libs.kotlinx.coroutines.test)
+            }
         }
 
         val commonMobileMain by creating {
@@ -85,8 +87,30 @@ kotlin {
             }
         }
 
-        iosMain.get().apply {
+
+        val iosX64Main by getting
+        val iosArm64Main by getting
+        val iosSimulatorArm64Main by getting
+        val iosMain by creating {
             dependsOn(commonMobileMain)
+            iosX64Main.dependsOn(this)
+            iosArm64Main.dependsOn(this)
+            iosSimulatorArm64Main.dependsOn(this)
+
+            dependencies {
+                // until this is resolved https://github.com/cashapp/sqldelight/issues/4357
+                implementation("co.touchlab:stately-common:2.0.6")
+            }
+        }
+
+        val iosX64Test by getting
+        val iosArm64Test by getting
+        val iosSimulatorArm64Test by getting
+        val iosTest by creating {
+            dependsOn(commonTest)
+            iosX64Test.dependsOn(this)
+            iosArm64Test.dependsOn(this)
+            iosSimulatorArm64Test.dependsOn(this)
         }
     }
 }

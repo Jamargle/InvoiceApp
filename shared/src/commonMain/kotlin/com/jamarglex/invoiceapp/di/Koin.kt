@@ -18,7 +18,7 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}) =
     }
 
 // called by iOS client
-fun initKoin() = initKoin {}
+fun initKoinFromIos() = initKoin()
 
 fun commonModule() = module {
     includes(platformModule())
